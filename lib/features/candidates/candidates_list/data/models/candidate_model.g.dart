@@ -38,8 +38,8 @@ Map<String, dynamic> _$$_CandidateModelToJson(_$_CandidateModel instance) =>
       'avatar': instance.avatar,
       'phone_number': instance.phoneNumber,
       'date_of_birth': instance.dateOfBirth?.toIso8601String(),
-      'employment': instance.employment,
-      'address': instance.address,
+      'employment': instance.employment?.toJson(),
+      'address': instance.address?.toJson(),
     };
 
 _$_Address _$$_AddressFromJson(Map<String, dynamic> json) => _$_Address(
