@@ -5,7 +5,7 @@ part 'candidate_model.g.dart';
 
 @freezed
 class CandidateModel with _$CandidateModel {
-  @JsonSerializable(fieldRename:FieldRename.snake)
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory CandidateModel({
     String? uid,
     String? password,
@@ -13,33 +13,37 @@ class CandidateModel with _$CandidateModel {
     String? lastName,
     String? username,
     String? email,
-    String? avatar,String? phoneNumber,
+    String? avatar,
+    String? phoneNumber,
     DateTime? dateOfBirth,
     Employment? employment,
     Address? address,
   }) = _CandidateModel;
 
-  factory CandidateModel.fromJson(Map<String, dynamic> json) => _$CandidateModelFromJson(json);
+  factory CandidateModel.fromJson(Map<String, dynamic> json) =>
+      _$CandidateModelFromJson(json);
 }
 
 @freezed
 class Address with _$Address {
-  @JsonSerializable(fieldRename:FieldRename.snake)
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Address({
     String? city,
     String? country,
   }) = _Address;
 
-  factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
+  factory Address.fromJson(Map<String, dynamic> json) =>
+      _$AddressFromJson(json);
 }
 
 @freezed
 class Employment with _$Employment {
-  @JsonSerializable(fieldRename:FieldRename.snake)
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Employment({
     String? title,
     String? keySkill,
   }) = _Employment;
 
-  factory Employment.fromJson(Map<String, dynamic> json) => _$EmploymentFromJson(json);
+  factory Employment.fromJson(Map<String, dynamic> json) =>
+      _$EmploymentFromJson(json);
 }
