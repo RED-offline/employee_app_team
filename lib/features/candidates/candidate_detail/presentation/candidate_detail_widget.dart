@@ -1,13 +1,16 @@
+import 'package:employee_app_team/features/candidates/candidates_list/data/models/candidate_model.dart';
+import 'package:employee_app_team/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CandidateDetailWidget extends StatelessWidget {
-  const CandidateDetailWidget({super.key});
+  const CandidateDetailWidget({required this.candidate, super.key});
+  final CandidateModel candidate;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('context.l10n.detailAppBarTitle'),
+        title: Text(context.l10n.detailAppBarTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.all(25),
@@ -18,7 +21,7 @@ class CandidateDetailWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     Hero(
-                      tag: 'avatar {candidate.id}',
+                      tag: 'avatar ${candidate.uid}',
                       child: Material(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40),
@@ -31,16 +34,16 @@ class CandidateDetailWidget extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    const Text(
-                      '{candidate.name!} {candidate.surname!}',
-                      style: TextStyle(
+                    Text(
+                      '${candidate.firstName!} ${candidate.lastName!}',
+                      style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      'candidate.position!',
+                      candidate.employment!.title!,
                       style:
                           TextStyle(fontSize: 20, color: Colors.grey.shade600),
                     ),
