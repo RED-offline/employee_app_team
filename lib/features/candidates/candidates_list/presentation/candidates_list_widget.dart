@@ -12,7 +12,7 @@ class CandidatesListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Candodate List Localizated'),
+        title: const Text('context.l10n.counterAppBarTitle'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: context.read<CandidatesListCubit>().loadInitialData,
@@ -23,7 +23,7 @@ class CandidatesListWidget extends StatelessWidget {
         child: ListView.builder(
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
-            return CandidateTile();
+            return const CandidateTile();
           },
         ),
       ),
