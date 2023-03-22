@@ -209,14 +209,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
-  dart_style:
-    dependency: transitive
-    description:
-      name: dart_style
-      sha256: "5be16bf1707658e4c03078d4a9b90208ded217fb02c163e207d334082412f2fb"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.5"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -225,6 +217,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  dart_style:
+    dependency: transitive
+    description:
+      name: dart_style
+      sha256: "5be16bf1707658e4c03078d4a9b90208ded217fb02c163e207d334082412f2fb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.5"
   diff_match_patch:
     dependency: transitive
     description:
@@ -312,6 +312,11 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   freezed:
     dependency: "direct dev"
     description:
@@ -344,6 +349,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  go_router:
+    dependency: "direct main"
+    description:
+      name: go_router
+      sha256: b90b9aaa7723ca7159a81c0cd3be8108c74c986c3fbc41d413fd82ea164733ea
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.4.0"
   graphs:
     dependency: transitive
     description:

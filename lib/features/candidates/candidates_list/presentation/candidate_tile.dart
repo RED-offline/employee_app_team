@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:employee_app_team/app/view/app.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CandidateTile extends StatelessWidget {
   const CandidateTile({super.key});
@@ -21,11 +23,9 @@ class CandidateTile extends StatelessWidget {
           shadowColor: Colors.blueGrey.withOpacity(0.4),
           child: InkWell(
             borderRadius: BorderRadius.circular(10),
-            onTap: () {},
-            // () => context.goNamed(
-            //   MyAppRouteConstants.detailRouteName,
-            //   extra: candidate,
-            // ),
+            onTap: () => context.goNamed(
+              MyAppRouteConstants.detailRouteName,
+            ),
             child: Row(
               children: [
                 Container(
