@@ -10,7 +10,7 @@ class ErrorPage extends StatelessWidget {
       appBar: AppBar(),
       body: const Center(
         child: Text(
-          'Error Page',
+          'Error',
           style: TextStyle(fontSize: 20, color: Colors.red),
         ),
       ),
