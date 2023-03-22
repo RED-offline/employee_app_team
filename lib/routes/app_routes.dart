@@ -18,7 +18,7 @@ final router = GoRouter(
           name: MyAppRouteConstants.detailRouteName,
           path: 'details',
           builder: (BuildContext context, GoRouterState state) {
-            final candidate = state.extra as CandidateModel;
+            final candidate = state.extra! as CandidateModel;
             return CandidateDetailPage(
               candidate: candidate,
             );
