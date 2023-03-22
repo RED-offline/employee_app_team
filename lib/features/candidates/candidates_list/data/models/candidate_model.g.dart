@@ -8,7 +8,6 @@ part of 'candidate_model.dart';
 
 _$_CandidateModel _$$_CandidateModelFromJson(Map<String, dynamic> json) =>
     _$_CandidateModel(
-      id: json['id'] as int?,
       uid: json['uid'] as String?,
       password: json['password'] as String?,
       firstName: json['first_name'] as String?,
@@ -16,23 +15,20 @@ _$_CandidateModel _$$_CandidateModelFromJson(Map<String, dynamic> json) =>
       username: json['username'] as String?,
       email: json['email'] as String?,
       avatar: json['avatar'] as String?,
-      gender: json['gender'] as String?,
       phoneNumber: json['phone_number'] as String?,
-      socialInsuranceNumber: json['social_insurance_number'] as String?,
       dateOfBirth: json['date_of_birth'] == null
           ? null
           : DateTime.parse(json['date_of_birth'] as String),
       employment: json['employment'] == null
           ? null
-          : Employment.fromJson(json['employment'].toJson() as Map<String, dynamic>),
+          : Employment.fromJson(json['employment'] as Map<String, dynamic>),
       address: json['address'] == null
           ? null
-          : Address.fromJson(json['address'].toJson() as Map<String, dynamic>),
+          : Address.fromJson(json['address'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_CandidateModelToJson(_$_CandidateModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'uid': instance.uid,
       'password': instance.password,
       'first_name': instance.firstName,
@@ -40,9 +36,7 @@ Map<String, dynamic> _$$_CandidateModelToJson(_$_CandidateModel instance) =>
       'username': instance.username,
       'email': instance.email,
       'avatar': instance.avatar,
-      'gender': instance.gender,
       'phone_number': instance.phoneNumber,
-      'social_insurance_number': instance.socialInsuranceNumber,
       'date_of_birth': instance.dateOfBirth?.toIso8601String(),
       'employment': instance.employment,
       'address': instance.address,
@@ -50,20 +44,12 @@ Map<String, dynamic> _$$_CandidateModelToJson(_$_CandidateModel instance) =>
 
 _$_Address _$$_AddressFromJson(Map<String, dynamic> json) => _$_Address(
       city: json['city'] as String?,
-      streetName: json['street_name'] as String?,
-      streetAddress: json['street_address'] as String?,
-      zipCode: json['zip_code'] as String?,
-      state: json['state'] as String?,
       country: json['country'] as String?,
     );
 
 Map<String, dynamic> _$$_AddressToJson(_$_Address instance) =>
     <String, dynamic>{
       'city': instance.city,
-      'street_name': instance.streetName,
-      'street_address': instance.streetAddress,
-      'zip_code': instance.zipCode,
-      'state': instance.state,
       'country': instance.country,
     };
 

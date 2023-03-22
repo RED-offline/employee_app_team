@@ -7,17 +7,13 @@ part 'candidate_model.g.dart';
 class CandidateModel with _$CandidateModel {
   @JsonSerializable(fieldRename:FieldRename.snake)
   const factory CandidateModel({
-    int? id,
     String? uid,
     String? password,
     String? firstName,
     String? lastName,
     String? username,
     String? email,
-    String? avatar,
-    String? gender,
-    String? phoneNumber,
-    String? socialInsuranceNumber,
+    String? avatar,String? phoneNumber,
     DateTime? dateOfBirth,
     Employment? employment,
     Address? address,
@@ -31,10 +27,6 @@ class Address with _$Address {
   @JsonSerializable(fieldRename:FieldRename.snake)
   const factory Address({
     String? city,
-    String? streetName,
-    String? streetAddress,
-    String? zipCode,
-    String? state,
     String? country,
   }) = _Address;
 
