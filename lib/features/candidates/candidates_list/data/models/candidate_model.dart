@@ -1,11 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'candidate_model.freezed.dart';
+
 part 'candidate_model.g.dart';
 
 @freezed
 class CandidateModel with _$CandidateModel {
-  @JsonSerializable(fieldRename: FieldRename.snake)
+  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
   const factory CandidateModel({
     String? uid,
     String? password,

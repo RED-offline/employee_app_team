@@ -260,7 +260,7 @@ class __$$_CandidateModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
 class _$_CandidateModel implements _CandidateModel {
   const _$_CandidateModel(
       {this.uid,
