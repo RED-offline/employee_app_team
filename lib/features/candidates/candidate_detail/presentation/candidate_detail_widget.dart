@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:employee_app_team/features/candidates/candidate_detail/utils/mail_app_launcher.dart';
 import 'package:employee_app_team/features/candidates/candidates_list/data/models/candidate_model.dart';
 import 'package:employee_app_team/l10n/l10n.dart';
 import 'package:flutter/material.dart';
@@ -58,9 +59,15 @@ class CandidateDetailWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 20),
-                  _tittleandinfo(
-                    'Email:',
-                    candidate.email!,
+                  GestureDetector(
+                    onTap: () {
+                      final mailLauncher = MailAppLauncher()
+                        ..launchMailApp(candidateEmail: candidate.email!);
+                    },
+                    child: _tittleandinfo(
+                      'Email:',
+                      candidate.email!,
+                    ),
                   ),
                   const SizedBox(height: 10),
                   _tittleandinfo('Phone:', candidate.phoneNumber!),

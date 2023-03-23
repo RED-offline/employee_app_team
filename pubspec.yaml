@@ -6,6 +6,7 @@ environment:
   sdk: ">=2.19.0 <3.0.0"
 
 dependencies:
+  url_launcher: ^6.1.10
   json_annotation: any
   freezed_annotation: any
   dio: ^5.0.3
