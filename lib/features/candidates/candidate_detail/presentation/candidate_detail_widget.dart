@@ -65,7 +65,9 @@ class CandidateDetailWidget extends StatelessWidget {
                   const SizedBox(height: 10),
                   _tittleandinfo('Phone:', candidate.phoneNumber!),
                   const SizedBox(height: 10),
-                  _tittleandinfo('Username', '@${candidate.username}'),
+                  _tittleandinfo('Username:', '@${candidate.username}'),
+                  const SizedBox(height: 10),
+                  _tittleandinfo('Country:', '${candidate.address!.country}'),
                   const SizedBox(height: 10),
                   _tittleandinfo('City:', candidate.address!.city!),
                 ],
@@ -87,10 +89,13 @@ class CandidateDetailWidget extends StatelessWidget {
         const SizedBox(
           width: 10,
         ),
-        Text(
-          info,
-          style: const TextStyle(
-            fontSize: 18,
+        Expanded(
+          child: Text(
+            overflow: TextOverflow.ellipsis,
+            info,
+            style: const TextStyle(
+              fontSize: 18,
+            ),
           ),
         ),
       ],
