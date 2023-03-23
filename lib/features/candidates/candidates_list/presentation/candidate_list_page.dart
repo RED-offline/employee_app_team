@@ -10,7 +10,8 @@ class CandidateListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CandidatesListCubit>(
-      create: (_) => CandidatesListCubit()..loadInitialData(),
+      create: (_) => CandidatesListCubit(usersProvider: UsersProvider())
+        ..loadInitialData(),
       child: CandidatesListWidget(),
     );
   }
