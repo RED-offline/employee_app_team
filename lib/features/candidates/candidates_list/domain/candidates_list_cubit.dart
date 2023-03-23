@@ -1,16 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:employee_app_team/features/candidates/candidates_list/data/api/users_provider.dart';
-import 'package:employee_app_team/features/candidates/candidates_list/data/models/candidate_model.dart';
-import 'package:flutter/material.dart';
-
-part 'candidates_list_state.dart';
+import 'package:employee_app_team/features/candidates/candidates_list/domain/candidates_list_state.dart';
 
 class CandidatesListCubit extends Cubit<CandidatesListState> {
   CandidatesListCubit({required UsersProvider usersProvider})
       : _usersProvider = usersProvider,
-        super(CandidatesListLoading()) {
-    loadInitialData();
-  }
+        super(const CandidatesListState.loading());
 
   final UsersProvider _usersProvider;
 
@@ -18,10 +13,10 @@ class CandidatesListCubit extends Cubit<CandidatesListState> {
     final response = await _usersProvider.getUsers();
     response.when(
       data: (data) {
-        emit(CandidatesListLoaded(candidates: data));
+        emit(CandidatesListState.loaded(candidates: data));
       },
       error: (_) {
-        emit(CandidatesListError());
+        emit(const CandidatesListState.error());
       },
     );
   }
