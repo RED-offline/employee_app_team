@@ -33,18 +33,25 @@ class CandidateTile extends StatelessWidget {
               children: [
                 Hero(
                   tag: 'avatar ${candidate.uid}',
-                  child: Container(
-                    height: 200,
-                    width: 120,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(8),
-                        bottomLeft: Radius.circular(8),
-                      ),
-                      image: DecorationImage(
-                        image: NetworkImage(
-                            'https://robohash.org/mollitiarerumdolor.png?size=300x300&set=set1'), //candidate.image!
-                        fit: BoxFit.cover,
+                  child: CachedNetworkImage(
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.error,
+                    ),
+                    imageUrl: candidate.avatar!,
+                    imageBuilder: (context, imageProvider) => Container(
+                      height: 200,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(8),
+                          bottomLeft: Radius.circular(8),
+                        ),
+                        image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
