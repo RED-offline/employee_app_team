@@ -23,7 +23,7 @@ class CandidateDetailWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     Hero(
-                      tag: '${candidate.uid}',
+                      tag: candidate.uid!,
                       child: Material(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40),

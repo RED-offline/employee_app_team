@@ -32,7 +32,7 @@ class CandidateTile extends StatelessWidget {
             child: Row(
               children: [
                 Hero(
-                  tag: '${candidate.uid}',
+                  tag: candidate.uid!,
                   child: CachedNetworkImage(
                     placeholder: (context, url) =>
                         const CircularProgressIndicator(),
