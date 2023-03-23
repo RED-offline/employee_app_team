@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CandidatesListWidget extends StatelessWidget {
-  const CandidatesListWidget({super.key});
+  const CandidatesListWidget({required this.candidates, super.key});
+  final List<CandidateModel> candidates;
 
   @override
   Widget build(BuildContext context) {
