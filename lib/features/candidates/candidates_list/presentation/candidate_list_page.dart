@@ -1,3 +1,4 @@
+import 'package:employee_app_team/features/candidates/candidates_list/data/api/users_provider.dart';
 import 'package:employee_app_team/features/candidates/candidates_list/domain/candidates_list_cubit.dart';
 import 'package:employee_app_team/features/candidates/candidates_list/presentation/candidates_list_widget.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,8 @@ class CandidateListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CandidatesListCubit>(
-      create: (_) => CandidatesListCubit()..loadInitialData(),
+      create: (_) => CandidatesListCubit(usersProvider: UsersProvider())
+        ..loadInitialData(),
       child: CandidatesListWidget(),
     );
   }
