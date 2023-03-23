@@ -3,4 +3,12 @@ part of 'candidates_list_cubit.dart';
 @immutable
 abstract class CandidatesListState {}
 
-class CandidatesListInitial extends CandidatesListState {}
+class CandidatesListLoading extends CandidatesListState {}
+
+class CandidatesListLoaded extends CandidatesListState {
+  CandidatesListLoaded({required this.candidates});
+
+  final List<CandidateModel> candidates;
+}
+
+class CandidatesListError extends CandidatesListState {}
