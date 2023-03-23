@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:employee_app_team/features/candidates/candidates_list/data/models/candidate_model.dart';
 import 'package:employee_app_team/l10n/l10n.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class CandidateDetailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(context.l10n.detailAppBarTitle),
       ),
       body: Padding(
@@ -28,8 +30,10 @@ class CandidateDetailWidget extends StatelessWidget {
                         ),
                         elevation: 10,
                         shadowColor: Colors.blueGrey.withOpacity(0.6),
-                        child: Image.network(
-                          'https://robohash.org/mollitiarerumdolor.png?size=300x300&set=set1',
+                        child: Image(
+                          image: CachedNetworkImageProvider(
+                            candidate.avatar!,
+                          ),
                         ),
                       ),
                     ),

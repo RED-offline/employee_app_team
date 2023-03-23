@@ -15,6 +15,7 @@ class CandidatesListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(context.l10n.counterAppBarTitle),
       ),
       floatingActionButton: FloatingActionButton(

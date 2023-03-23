@@ -28,8 +28,7 @@ class CandidateListPage extends StatelessWidget {
       firstName: 'Daren',
       lastName: 'Smith',
       email: 'daren.smith@email.com',
-      avatar:
-          'https://robohash.org/mollitiarerumdolor.png?size=300x300&set=set1',
+      avatar: 'https://robohash.org/auttemporibuset.png?size=300x300&set=set1',
       password: 'UztZAnELFO',
       username: 'daren.smith',
       phoneNumber: '+381 1-403-911-8339 x06142',
