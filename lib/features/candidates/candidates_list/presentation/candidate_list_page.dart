@@ -12,7 +12,7 @@ class CandidateListPage extends StatelessWidget {
     return BlocProvider<CandidatesListCubit>(
       create: (_) => CandidatesListCubit(usersProvider: UsersProvider())
         ..loadInitialData(),
-      child: CandidatesListWidget(),
+      child: const CandidatesListWidget(),
     );
   }
 }
