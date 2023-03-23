@@ -15,7 +15,6 @@ class CandidatesListCubit extends Cubit<CandidatesListState> {
   final UsersProvider _usersProvider;
 
   Future<void> loadInitialData() async {
-    emit(CandidatesListLoading());
     final response = await _usersProvider.getUsers();
     response.when(
       data: (data) {
