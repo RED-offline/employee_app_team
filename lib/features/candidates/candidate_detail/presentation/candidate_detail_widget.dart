@@ -1,13 +1,19 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:employee_app_team/features/candidates/candidate_detail/utils/mail_app_launcher.dart';
+import 'package:employee_app_team/features/candidates/candidates_list/data/models/candidate_model.dart';
+import 'package:employee_app_team/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CandidateDetailWidget extends StatelessWidget {
-  const CandidateDetailWidget({super.key});
+  const CandidateDetailWidget({required this.candidate, super.key});
+  final CandidateModel candidate;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('context.l10n.detailAppBarTitle'),
+        centerTitle: true,
+        title: Text(context.l10n.detailAppBarTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.all(25),
@@ -18,29 +24,31 @@ class CandidateDetailWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     Hero(
-                      tag: 'avatar {candidate.id}',
+                      tag: candidate.uid!,
                       child: Material(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40),
                         ),
                         elevation: 10,
                         shadowColor: Colors.blueGrey.withOpacity(0.6),
-                        child: Image.network(
-                          'https://robohash.org/mollitiarerumdolor.png?size=300x300&set=set1',
+                        child: Image(
+                          image: CachedNetworkImageProvider(
+                            candidate.avatar!,
+                          ),
                         ),
                       ),
                     ),
                     const SizedBox(height: 20),
-                    const Text(
-                      '{candidate.name!} {candidate.surname!}',
-                      style: TextStyle(
+                    Text(
+                      '${candidate.firstName!} ${candidate.lastName!}',
+                      style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      'candidate.position!',
+                      candidate.employment!.title!,
                       style:
                           TextStyle(fontSize: 20, color: Colors.grey.shade600),
                     ),
@@ -51,16 +59,24 @@ class CandidateDetailWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 20),
-                  _tittleandinfo(
-                    'Email:',
-                    'lucien.runolfsdottir@email.com',
+                  GestureDetector(
+                    onTap: () {
+                      final mailLauncher = MailAppLauncher()
+                        ..launchMailApp(candidateEmail: candidate.email!);
+                    },
+                    child: _tittleandinfo(
+                      'Email:',
+                      candidate.email!,
+                    ),
                   ),
                   const SizedBox(height: 10),
-                  _tittleandinfo('Phone:', '+372 441.523.4205'),
+                  _tittleandinfo('Phone:', candidate.phoneNumber!),
                   const SizedBox(height: 10),
-                  _tittleandinfo('Date of Birth:', '1983-11-26'),
+                  _tittleandinfo('Username:', '@${candidate.username}'),
                   const SizedBox(height: 10),
-                  _tittleandinfo('City:', 'New Norbertomouth'),
+                  _tittleandinfo('Country:', '${candidate.address!.country}'),
+                  const SizedBox(height: 10),
+                  _tittleandinfo('City:', candidate.address!.city!),
                 ],
               ),
             ],
@@ -80,10 +96,13 @@ class CandidateDetailWidget extends StatelessWidget {
         const SizedBox(
           width: 10,
         ),
-        Text(
-          info,
-          style: const TextStyle(
-            fontSize: 18,
+        Expanded(
+          child: Text(
+            overflow: TextOverflow.ellipsis,
+            info,
+            style: const TextStyle(
+              fontSize: 18,
+            ),
           ),
         ),
       ],

@@ -1,8 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:employee_app_team/features/candidates/candidates_list/data/models/candidate_model.dart';
+import 'package:employee_app_team/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CandidateTile extends StatelessWidget {
-  const CandidateTile({super.key});
+  const CandidateTile({required this.candidate, super.key});
+  final CandidateModel candidate;
 
   @override
   Widget build(BuildContext context) {
@@ -21,25 +25,34 @@ class CandidateTile extends StatelessWidget {
           shadowColor: Colors.blueGrey.withOpacity(0.4),
           child: InkWell(
             borderRadius: BorderRadius.circular(10),
-            onTap: () {},
-            // () => context.goNamed(
-            //   MyAppRouteConstants.detailRouteName,
-            //   extra: candidate,
-            // ),
+            onTap: () => context.goNamed(
+              MyAppRouteConstants.detailRouteName,
+              extra: candidate,
+            ),
             child: Row(
               children: [
-                Container(
-                  height: 200,
-                  width: 120,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(8),
-                      bottomLeft: Radius.circular(8),
+                Hero(
+                  tag: candidate.uid!,
+                  child: CachedNetworkImage(
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.error,
                     ),
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          'https://robohash.org/mollitiarerumdolor.png?size=300x300&set=set1'), //candidate.image!
-                      fit: BoxFit.cover,
+                    imageUrl: candidate.avatar!,
+                    imageBuilder: (context, imageProvider) => Container(
+                      height: 200,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(8),
+                          bottomLeft: Radius.circular(8),
+                        ),
+                        image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -50,20 +63,20 @@ class CandidateTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                        children: const [
+                        children: [
                           Text(
-                            ' candidate.name!',
-                            style: TextStyle(
+                            candidate.firstName!,
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(width: 5),
+                          const SizedBox(width: 5),
                           Flexible(
                             child: Text(
                               overflow: TextOverflow.ellipsis,
-                              'candidate.surname!',
-                              style: TextStyle(
+                              candidate.lastName!,
+                              style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -74,7 +87,7 @@ class CandidateTile extends StatelessWidget {
                       const SizedBox(height: 10),
                       Text(
                         overflow: TextOverflow.ellipsis,
-                        ' candidate.position!',
+                        candidate.employment!.title!,
                         style: TextStyle(
                           fontSize: 15,
                           color: Colors.grey.shade600,

@@ -1,14 +1,12 @@
-part of 'candidates_list_cubit.dart';
+import 'package:employee_app_team/features/candidates/candidates_list/data/models/candidate_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+part 'candidates_list_state.freezed.dart';
 
-@immutable
-abstract class CandidatesListState {}
-
-class CandidatesListLoading extends CandidatesListState {}
-
-class CandidatesListLoaded extends CandidatesListState {
-  CandidatesListLoaded({required this.candidates});
-
-  final List<CandidateModel> candidates;
+@freezed
+class CandidatesListState with _$CandidatesListState {
+  const factory CandidatesListState.loading() = Loading;
+  const factory CandidatesListState.loaded({
+    required List<CandidateModel> candidates,
+  }) = Loaded;
+  const factory CandidatesListState.error() = Error;
 }
-
-class CandidatesListError extends CandidatesListState {}
